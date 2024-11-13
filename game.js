@@ -1,6 +1,8 @@
 //Help monkey to the bananas game
 //pehe24kv NMD24
 
+let state = "start";
+
 //Start screen for game
 function startScreen() {
   backgroundGame();
@@ -419,12 +421,13 @@ function draw() {
   background(199, 233, 255);
   startScreen();
 
-  if (y <= 1210) {
+  /*if (y <= 1210) {
     y = y + speed;
-  }
+  }*/
 }
 
 function mouseClicked() {
-  if (mouseX > 150 && mouseX < 470 && mouseY > 270 && mouseY < 400) {
+  if (mouseX > 204 && mouseX < 494 && mouseY > 231 && mouseY < 417) {
+    console.log("Starting the game");
   }
 }
