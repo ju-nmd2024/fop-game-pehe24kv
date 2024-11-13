@@ -166,8 +166,11 @@ function bananas() {
   pop();
 }
 
-function clouds() {
-  fill(0);
+function cloud() {
+  fill(255);
+  ellipse(145, -200, 170, 90);
+  ellipse(20, -200, 170, 90);
+  ellipse(70, -250, 140, 90);
 }
 
 function backgroundGame() {
@@ -181,6 +184,20 @@ function backgroundGame() {
   translate(50, 125);
   scale(0.7);
   push();
+  //clouds
+  cloud();
+  push();
+  translate(650, 100);
+  cloud();
+  pop();
+  push();
+  translate(200, 300);
+  cloud();
+  pop();
+  push();
+  translate(400, -100);
+  cloud();
+  pop();
   //trees
   translate(120, -10);
   tree2();
