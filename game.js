@@ -1,7 +1,379 @@
-function setup() {
-  createCanvas(800, 600);
+//Help monkey to the bananas game
+
+function tree2() {
+  //tree trunk
+  push();
+  fill(63, 117, 23);
+  ellipse(82, 450, 160, 40);
+  pop();
+  push();
+  fill(102, 51, 0);
+  noStroke();
+  beginShape();
+  vertex(61, 83);
+  bezierVertex(73, 395, 64, 405, 36, 458);
+  vertex(36, 458);
+  vertex(128, 458);
+  bezierVertex(100, 405, 91, 415, 103, 83);
+  vertex(103, 83);
+  vertex(67, 83);
+  endShape();
+  pop();
+  // --- bananas
+  push();
+  fill(255, 219, 31);
+  stroke(255, 196, 31);
+  // --- first row bananas
+  ellipse(123, 190, 15, 40);
+  //second row bananas
+  ellipse(130, 170, 15, 40);
+  ellipse(115, 170, 15, 40);
+  // --- third row bananas
+  ellipse(107, 150, 15, 40);
+  ellipse(122, 150, 15, 40);
+  ellipse(137, 150, 15, 40);
+  // --- forth row bananas
+  ellipse(100, 130, 15, 40);
+  ellipse(115, 130, 15, 40);
+  ellipse(130, 130, 15, 40);
+  ellipse(145, 130, 15, 40);
+  pop();
+  //Leaves
+  // --- Leaf 1
+  fill(56, 118, 8);
+  push();
+  translate(80, 83);
+  rotate(0.4);
+  ellipse(100, 0, 200, 60);
+  pop();
+  // --- Leaf 2
+  push();
+  translate(80, 83);
+  rotate(-0.4);
+  ellipse(90, -15, 200, 60);
+  pop();
+  // --- Leaf 3
+  push();
+  translate(80, 83);
+  rotate(-1.5);
+  ellipse(90, -5, 200, 60);
+  pop();
+  // --- Leaf 4
+  push();
+  translate(80, 83);
+  rotate(2.6);
+  ellipse(90, 0, 200, 60);
+  pop();
+  // --- Leaf 5
+  push();
+  translate(80, 83);
+  rotate(3.7);
+  ellipse(90, 0, 200, 60);
+  pop();
 }
 
+function tree() {
+  //tree trunk
+  push();
+  fill(63, 117, 23);
+  ellipse(82, 450, 160, 40);
+  pop();
+  push();
+  fill(153, 76, 0);
+  noStroke();
+  beginShape();
+  vertex(61, 83);
+  bezierVertex(73, 395, 64, 405, 36, 458);
+  vertex(36, 458);
+  vertex(128, 458);
+  bezierVertex(100, 405, 91, 415, 103, 83);
+  vertex(103, 83);
+  vertex(67, 83);
+  endShape();
+  pop();
+  // --- bananas
+  push();
+  fill(255, 219, 31);
+  stroke(255, 196, 31);
+  // --- first row bananas
+  ellipse(123, 190, 15, 40);
+  //second row bananas
+  ellipse(130, 170, 15, 40);
+  ellipse(115, 170, 15, 40);
+  // --- third row bananas
+  ellipse(107, 150, 15, 40);
+  ellipse(122, 150, 15, 40);
+  ellipse(137, 150, 15, 40);
+  // --- forth row bananas
+  ellipse(100, 130, 15, 40);
+  ellipse(115, 130, 15, 40);
+  ellipse(130, 130, 15, 40);
+  ellipse(145, 130, 15, 40);
+  pop();
+  //Leaves
+  // --- Leaf 1
+  fill(88, 148, 43);
+  push();
+  translate(80, 83);
+  rotate(0.4);
+  ellipse(100, 0, 200, 60);
+  pop();
+  // --- Leaf 2
+  push();
+  translate(80, 83);
+  rotate(-0.4);
+  ellipse(90, -15, 200, 60);
+  pop();
+  // --- Leaf 3
+  push();
+  translate(80, 83);
+  rotate(-1.5);
+  ellipse(90, -5, 200, 60);
+  pop();
+  // --- Leaf 4
+  push();
+  translate(80, 83);
+  rotate(2.6);
+  ellipse(90, 0, 200, 60);
+  pop();
+  // --- Leaf 5
+  push();
+  translate(80, 83);
+  rotate(3.7);
+  ellipse(90, 0, 200, 60);
+  pop();
+}
+
+function bananas() {
+  // --- bananas
+  push();
+  fill(255, 219, 31);
+  stroke(255, 196, 31);
+  // --- first row bananas
+  ellipse(123, 190, 15, 40);
+  //second row bananas
+  ellipse(130, 170, 15, 40);
+  ellipse(115, 170, 15, 40);
+  // --- third row bananas
+  ellipse(107, 150, 15, 40);
+  ellipse(122, 150, 15, 40);
+  ellipse(137, 150, 15, 40);
+  // --- forth row bananas
+  ellipse(100, 130, 15, 40);
+  ellipse(115, 130, 15, 40);
+  ellipse(130, 130, 15, 40);
+  ellipse(145, 130, 15, 40);
+  pop();
+}
+
+function clouds() {
+  fill(0);
+}
+
+function backgroundGame() {
+  //grass
+  translate(0, 175);
+  fill(123, 174, 85);
+  noStroke();
+  rect(0, 450, 700, 160);
+  fill(88, 148, 43);
+  rect(0, 410, 700, 60);
+  translate(50, 125);
+  scale(0.7);
+  push();
+  //trees
+  translate(120, -10);
+  tree2();
+  pop();
+  tree();
+  push();
+  translate(550, -10);
+  tree2();
+  pop();
+  push();
+  push();
+  translate(820, -10);
+  tree2();
+  pop();
+  push();
+  translate(700, 0);
+  tree();
+  pop();
+}
+function monkey(x, y) {
+  scale(0.3);
+  //Tail
+  push();
+  noFill();
+  stroke(168, 111, 67);
+  strokeWeight(12);
+  beginShape();
+  vertex(x + 176, y + 188);
+  bezierVertex(x + 351, y + 102, x + 137, y, x + 273, y - 110);
+  endShape();
+  pop();
+
+  //Left arm
+  push();
+  strokeWeight(20);
+  stroke(168, 111, 67);
+  beginShape();
+  vertex(x + 44, y + 38);
+  bezierVertex(x - 42, y + 116, x + 22, y + 169, x + 48, y + 167);
+  endShape();
+  pop();
+  stroke(119, 74, 40);
+  strokeWeight(2);
+  push();
+  translate(x + 19, y + 106);
+  rotate(0.1);
+  ellipse(0, 0, 15, 50);
+  pop();
+  push();
+  fill(168, 111, 67);
+  strokeWeight(2);
+  stroke(119, 74, 40);
+  translate(x + 19, y + 106);
+  rotate(0.8);
+  ellipse(+30, -50, 140, 190);
+  pop();
+
+  //Right arm
+  push();
+  strokeWeight(20);
+  stroke(168, 111, 67);
+  beginShape();
+  vertex(x - 44 + 200, y + 38);
+  bezierVertex(
+    x + 42 + 200,
+    y + 116,
+    x - 22 + 200,
+    y + 169,
+    x - 48 + 200,
+    y + 167
+  );
+  endShape();
+  pop();
+  push();
+  translate(x - 19, y + 106);
+  rotate(-0.1);
+  ellipse(200, 21, 15, 50);
+  pop();
+  push();
+  fill(168, 111, 67);
+  strokeWeight(2);
+  stroke(119, 74, 40);
+  translate(x + 140, y + 148);
+  rotate(-0.8);
+  ellipse(+30, -50, 140, 190);
+  pop();
+
+  //Left leg
+  fill(168, 111, 67);
+  strokeWeight(2);
+  stroke(119, 74, 40);
+  push();
+  translate(x + 110, y + 300);
+  rotate(0.3);
+  ellipse(-70, -30, 45, 90);
+  pop();
+  push();
+  fill(228, 207, 191);
+  translate(x + 40, y + 294);
+  rotate();
+  arc(0, 0, 60, 40, PI, 0, CHORD);
+  pop();
+
+  //Right leg
+  fill(168, 111, 67);
+  strokeWeight(2);
+  stroke(119, 74, 40);
+  push();
+  translate(x - 110, y + 300);
+  rotate(-0.3);
+  ellipse(+260, +20, 45, 90);
+  pop();
+  push();
+  fill(228, 207, 191);
+  translate(x - 90, y + 294);
+  rotate();
+  arc(0 + 250, 0, 60, 40, PI, 0, CHORD);
+  pop();
+
+  //Body
+  ellipse(x + 100, y + 130, 170, 250);
+
+  //Belly
+  push();
+  noStroke();
+  fill(228, 207, 191);
+  ellipse(x + 100, y + 145, 130, 190);
+  pop();
+
+  //Ears
+  push();
+  fill(228, 207, 191);
+  circle(x + 10, y - 30, 70, 70);
+  circle(x + 190, y - 30, 70, 70);
+  noFill();
+  beginShape();
+  vertex(x + 5, y - 25);
+  bezierVertex(x + 15, y - 80, x - 44, y - 4, x + 20, y - 25);
+  endShape();
+  pop();
+  push();
+  noFill();
+  beginShape();
+  vertex(x + 5, y - 25);
+  bezierVertex(x + 15, y - 80, x - 44, y - 4, x + 20, y - 25);
+  endShape();
+  beginShape();
+  vertex(x - 5 + 200, y - 25);
+  bezierVertex(x - 15 + 200, y - 80, x + 44 + 200, y - 4, x - 20 + 200, y - 25);
+  endShape();
+  pop();
+
+  //Head
+  ellipse(x + 100, y, 190, 90);
+  circle(x + 100, y - 40, 160, 160);
+  push();
+  fill(228, 207, 191);
+  noStroke();
+  circle(x + 100, y - 40, 130, 130);
+  ellipse(x + 100, y, 170, 80);
+  pop();
+
+  //Eyes
+  fill(0);
+  noStroke();
+  circle(x + 60, y - 35, 20);
+  circle(x + 140, y - 35, 20);
+  fill(255);
+  circle(x + 55, y - 38, 5);
+  circle(x + 137, y - 38, 5);
+
+  //Nose
+  fill(119, 74, 40);
+  triangle(x + 100, y, x + 80, y - 10, x + 120, y - 10);
+
+  //Mouth
+  strokeWeight(3);
+  stroke(119, 74, 40);
+  line(x + 100, y, x + 100, y + 15);
+  noFill();
+  arc(x + 100, y + 10, 40, 10, 0, PI);
+}
+
+let x = 600;
+let y = 200;
+let speed = 7;
+
 function draw() {
-  background(255, 140, 0);
+  background(199, 233, 255);
+  backgroundGame();
+  //monkey(x, y);
+
+  if (y <= 1210) {
+    y = y + speed;
+  }
 }
