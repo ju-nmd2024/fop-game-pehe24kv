@@ -1,4 +1,78 @@
 //Help monkey to the bananas game
+//pehe24kv NMD24
+
+//Start screen for game
+function startScreen() {
+  backgroundGame();
+  button();
+}
+
+//Game screen
+function gameScreen() {
+  backgroundGame();
+  monkey();
+}
+
+function backgroundGame() {
+  //grass
+  translate(0, 175);
+  fill(123, 174, 85);
+  noStroke();
+  rect(0, 450, 700, 160);
+  fill(88, 148, 43);
+  rect(0, 410, 700, 60);
+  translate(50, 125);
+  scale(0.7);
+  push();
+  //clouds
+  cloud();
+  push();
+  translate(650, 100);
+  cloud();
+  pop();
+  push();
+  translate(200, 300);
+  cloud();
+  pop();
+  push();
+  translate(400, -100);
+  cloud();
+  pop();
+  //trees
+  translate(120, -10);
+  tree2();
+  pop();
+  tree();
+  push();
+  translate(550, -10);
+  tree2();
+  pop();
+  push();
+  push();
+  translate(820, -10);
+  tree2();
+  pop();
+  push();
+  translate(700, 0);
+  tree();
+  pop();
+}
+
+function button() {
+  //Button
+  push();
+  fill(255, 219, 31);
+  strokeWeight(15);
+  stroke(255, 196, 31);
+  rect(230, -150 + 60, 400, 250, 20);
+  pop();
+
+  //Text
+  fill(0);
+  noStroke();
+  text("START THE GAME", 245, 15, [100, 100]);
+  textSize(42);
+}
 
 function tree2() {
   //tree trunk
@@ -173,50 +247,6 @@ function cloud() {
   ellipse(70, -250, 140, 90);
 }
 
-function backgroundGame() {
-  //grass
-  translate(0, 175);
-  fill(123, 174, 85);
-  noStroke();
-  rect(0, 450, 700, 160);
-  fill(88, 148, 43);
-  rect(0, 410, 700, 60);
-  translate(50, 125);
-  scale(0.7);
-  push();
-  //clouds
-  cloud();
-  push();
-  translate(650, 100);
-  cloud();
-  pop();
-  push();
-  translate(200, 300);
-  cloud();
-  pop();
-  push();
-  translate(400, -100);
-  cloud();
-  pop();
-  //trees
-  translate(120, -10);
-  tree2();
-  pop();
-  tree();
-  push();
-  translate(550, -10);
-  tree2();
-  pop();
-  push();
-  push();
-  translate(820, -10);
-  tree2();
-  pop();
-  push();
-  translate(700, 0);
-  tree();
-  pop();
-}
 function monkey(x, y) {
   scale(0.3);
   //Tail
@@ -381,16 +411,20 @@ function monkey(x, y) {
   arc(x + 100, y + 10, 40, 10, 0, PI);
 }
 
-let x = 600;
-let y = 200;
-let speed = 7;
+let x = 1300;
+let y = -1300;
+let speed = 30;
 
 function draw() {
   background(199, 233, 255);
-  backgroundGame();
-  //monkey(x, y);
+  startScreen();
 
   if (y <= 1210) {
     y = y + speed;
+  }
+}
+
+function mouseClicked() {
+  if (mouseX > 150 && mouseX < 470 && mouseY > 270 && mouseY < 400) {
   }
 }
