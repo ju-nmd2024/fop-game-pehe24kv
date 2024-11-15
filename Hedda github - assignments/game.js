@@ -8,7 +8,7 @@ let state = "start";
 
 //Game logic variable
 let velocityY = 0.1;
-let acceleration = 0.2;
+let acceleration = 0.1;
 
 //Start screen for game
 function startScreen() {
@@ -32,40 +32,48 @@ function gameScreen() {
   backgroundGame();
   monkey(monkeyX, monkeyY);
 }
+
 //Lost screen
-function lostResult() {
-  background(199, 233, 255);
+function lostScreen() {
+  background(102, 0, 0);
+  push();
+  // scale(1);
+  monkeySad(250, 200);
+  bandage(250, 200);
+  pop();
+
   //Re-play button
   push();
-  fill(255, 219, 31);
+  fill(204, 0, 0);
   strokeWeight(15);
-  stroke(255, 196, 31);
-  rect(230, -150 + 60, 400, 250, 20);
+  stroke(153, 0, 0);
+  rect(190, +290, 320, 200, 20);
   pop();
 
   //Text
   fill(0);
   noStroke();
   textSize(42);
-  text("RE-PLAY", 245, 15, [100, 100]);
+  text("RE-PLAY", 260, 370, [100, 100]);
 }
 
 //Won screen
-function wonResult() {
-  background(229, 204, 255);
+function wonScreen() {
+  background(255, 204, 204);
+  gift();
   //Re-play button
   push();
-  fill(255, 219, 31);
+  fill(204, 0, 0);
   strokeWeight(15);
-  stroke(255, 196, 31);
-  rect(230, -150 + 60, 400, 250, 20);
+  stroke(153, 0, 0);
+  rect(190, +290, 320, 200, 20);
   pop();
 
   //Text
   fill(0);
   noStroke();
   textSize(42);
-  text("RE-PLAY", 245, 15, [100, 100]);
+  text("RE-PLAY", 260, 370, [100, 100]);
 }
 
 function backgroundGame() {
@@ -467,22 +475,232 @@ function monkey(x, y) {
   arc(x + 100, y + 10, 40, 10, 0, PI);
 }
 
+function monkeySad(x, y) {
+  //Tail
+  push();
+  noFill();
+  stroke(168, 111, 67);
+  strokeWeight(12);
+  beginShape();
+  vertex(x + 176, y + 188);
+  bezierVertex(x + 351, y + 102, x + 137, y, x + 273, y - 110);
+  endShape();
+  pop();
+
+  //Left arm
+  push();
+  strokeWeight(20);
+  stroke(168, 111, 67);
+  beginShape();
+  vertex(x + 44, y + 38);
+  bezierVertex(x - 42, y + 116, x + 22, y + 169, x + 48, y + 167);
+  endShape();
+  pop();
+  stroke(119, 74, 40);
+  strokeWeight(2);
+  push();
+  translate(x + 19, y + 106);
+  rotate(0.1);
+  ellipse(0, 0, 15, 50);
+  pop();
+  push();
+  fill(168, 111, 67);
+  strokeWeight(2);
+  stroke(119, 74, 40);
+  translate(x + 19, y + 106);
+  rotate(0.8);
+  ellipse(+30, -50, 140, 190);
+  pop();
+
+  //Right arm
+  push();
+  strokeWeight(20);
+  stroke(168, 111, 67);
+  beginShape();
+  vertex(x - 44 + 200, y + 38);
+  bezierVertex(
+    x + 42 + 200,
+    y + 116,
+    x - 22 + 200,
+    y + 169,
+    x - 48 + 200,
+    y + 167
+  );
+  endShape();
+  pop();
+  push();
+  translate(x - 19, y + 106);
+  rotate(-0.1);
+  ellipse(200, 21, 15, 50);
+  pop();
+  push();
+  fill(168, 111, 67);
+  strokeWeight(2);
+  stroke(119, 74, 40);
+  translate(x + 140, y + 148);
+  rotate(-0.8);
+  ellipse(+30, -50, 140, 190);
+  pop();
+
+  //Left leg
+  fill(168, 111, 67);
+  strokeWeight(2);
+  stroke(119, 74, 40);
+  push();
+  translate(x + 110, y + 300);
+  rotate(0.3);
+  ellipse(-70, -30, 45, 90);
+  pop();
+  push();
+  fill(228, 207, 191);
+  translate(x + 40, y + 294);
+  rotate();
+  arc(0, 0, 60, 40, PI, 0, CHORD);
+  pop();
+
+  //Right leg
+  fill(168, 111, 67);
+  strokeWeight(2);
+  stroke(119, 74, 40);
+  push();
+  translate(x - 110, y + 300);
+  rotate(-0.3);
+  ellipse(+260, +20, 45, 90);
+  pop();
+  push();
+  fill(228, 207, 191);
+  translate(x - 90, y + 294);
+  rotate();
+  arc(0 + 250, 0, 60, 40, PI, 0, CHORD);
+  pop();
+
+  //Body
+  ellipse(x + 100, y + 130, 170, 250);
+
+  //Belly
+  push();
+  noStroke();
+  fill(228, 207, 191);
+  ellipse(x + 100, y + 145, 130, 190);
+  pop();
+
+  //Ears
+  push();
+  fill(228, 207, 191);
+  circle(x + 10, y - 30, 70, 70);
+  circle(x + 190, y - 30, 70, 70);
+  noFill();
+  beginShape();
+  vertex(x + 5, y - 25);
+  bezierVertex(x + 15, y - 80, x - 44, y - 4, x + 20, y - 25);
+  endShape();
+  pop();
+  push();
+  noFill();
+  beginShape();
+  vertex(x + 5, y - 25);
+  bezierVertex(x + 15, y - 80, x - 44, y - 4, x + 20, y - 25);
+  endShape();
+  beginShape();
+  vertex(x - 5 + 200, y - 25);
+  bezierVertex(x - 15 + 200, y - 80, x + 44 + 200, y - 4, x - 20 + 200, y - 25);
+  endShape();
+  pop();
+
+  //Head
+  ellipse(x + 100, y, 190, 90);
+  circle(x + 100, y - 40, 160, 160);
+  push();
+  fill(228, 207, 191);
+  noStroke();
+  circle(x + 100, y - 40, 130, 130);
+  ellipse(x + 100, y, 170, 80);
+  pop();
+
+  //Eyes
+  fill(0);
+  noStroke();
+  circle(x + 60, y - 35, 20);
+  circle(x + 140, y - 35, 20);
+  fill(255);
+  circle(x + 55, y - 38, 5);
+  circle(x + 137, y - 38, 5);
+
+  //Nose
+  fill(119, 74, 40);
+  triangle(x + 100, y, x + 80, y - 10, x + 120, y - 10);
+
+  //Mouth
+  strokeWeight(3);
+  stroke(119, 74, 40);
+  line(x + 100, y, x + 100, y + 15);
+  noFill();
+  arc(x + 100, y + 20, 40, 10, PI, 0);
+}
+
+function bandage(x, y) {
+  //Plaster
+  push();
+  translate(x + 40, y);
+  rotate(0.9);
+  fill(255, 255, 255);
+  noStroke();
+  ellipse(0, 0, 20, 50);
+  fill(255, 229, 204);
+  rect(-10, -7, 20, 20);
+  pop();
+
+  //Bandage
+  fill(255, 255, 255);
+  noStroke();
+  //bandage first layer
+  arc(x + 100, y - 50, 160, 140, PI, 0);
+
+  //Cut
+  stroke(255, 153, 153);
+  strokeWeight(3);
+  line(340, 190, 356, 207);
+}
+
+function gift() {
+  fill(153, 204, 255);
+  noStroke();
+  //box
+  rect(200, 400, 300, 200);
+  //Lace
+  fill(0, 102, 204);
+  rect(335, 400, 30, 200);
+  triangle(350, 400, 220, 285, 220, 400);
+  triangle(350, 400, 480, 285, 480, 400);
+  fill(0, 76, 153);
+  rect(335, 400, 30, -10);
+}
+
 function draw() {
   if (state === "start") {
     startScreen();
   } else if (state === "game") {
     gameScreen();
-    if ((monkeyY = 1210)) {
-      monkeyY = monkeyY + speed;
+    if (monkeyY >= 1210) {
+      console.log("Landing velocity = " + velocityY);
+      if (velocityY <= 5) {
+        state = "won";
+      } else if (velocityY > 5) {
+        state = "lost";
+      }
+      velocityY = 0;
     }
-
     //Gravity logic
     monkeyY = monkeyY + velocityY;
     velocityY = velocityY + acceleration;
 
     if (keyIsDown(32)) {
-      velocityY = velocityY - 0.1;
+      velocityY = velocityY - 1;
     }
+  } else if (state === "won") {
+    wonScreen();
+  } else if (state === "lost") {
+    lostScreen();
   }
 }
 
@@ -491,4 +709,6 @@ function mouseClicked() {
     console.log("Starting the game");
     state = "game";
   }
+  console.log("monkeyY = " + monkeyY);
+  console.log("velocityY = " + velocityY);
 }
