@@ -17,6 +17,18 @@ function setup() {
 //Start screen
 function startScreen() {
   backgroundGame();
+  startButton();
+  //Text
+  fill(0, 102, 204);
+  noStroke();
+  push();
+  textSize(50);
+  text("MONKEY FALL", 275, -300, [100, 100]);
+  pop();
+  push();
+  textSize(30);
+  text("HELP THE MONKEY TO THE BANANAS", 150, -240, [100, 100]);
+  pop();
 }
 
 //The game background with all the detail functions
