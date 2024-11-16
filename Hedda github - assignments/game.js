@@ -1,6 +1,64 @@
 //Game - let the monkey to the ground
 //Hedda Petersson - pehe24kv
 
+let monkeyX = 1300;
+let monkeyY = -1300;
+let state = "start";
+
+//Game logic variable
+let velocityY = 1;
+let acceleration = 1;
+
+//Start screen
+function startScreen() {}
+
+//The game background with all the detail functions
+function backgroundGame() {
+  background(199, 233, 255);
+  //grass
+  translate(0, 175);
+  fill(123, 174, 85);
+  noStroke();
+  rect(0, 450, 700, 160);
+  fill(88, 148, 43);
+  rect(0, 410, 700, 60);
+  translate(50, 125);
+  scale(0.7);
+  push();
+  //clouds
+  cloud();
+  push();
+  translate(650, 100);
+  cloud();
+  pop();
+  push();
+  translate(200, 300);
+  cloud();
+  pop();
+  push();
+  translate(400, -100);
+  cloud();
+  pop();
+  //trees
+  translate(120, -10);
+  tree2();
+  pop();
+  tree();
+  push();
+  translate(550, -10);
+  tree2();
+  pop();
+  push();
+  push();
+  translate(820, -10);
+  tree2();
+  pop();
+  push();
+  translate(700, 0);
+  tree();
+  pop();
+}
+
 function tree2() {
   //tree trunk
   push();
