@@ -31,6 +31,35 @@ function startScreen() {
   pop();
 }
 
+//Game screen
+function gameScreen() {
+  backgroundGame();
+  monkey(monkeyX, monkeyY);
+}
+
+//Lost screen
+function lostScreen() {
+  backgroundGame();
+  background(0, 0, 0, 90);
+  //Monkey position
+  push();
+  monkeySad(310, 300);
+  bandage(310, 300);
+  pop();
+  //Text
+  fill(0, 0, 0);
+  noStroke();
+  push();
+  textSize(50);
+  text("OH NO...", 330, -300, [100, 100]);
+  text("THE MONKEY FELL TO FAST", 100, -240, [100, 100]);
+  pop();
+  push();
+  textSize(30);
+  text("(PRESS ON THE SCREEN TO RE-PLAY)", 150, -170, [100, 100]);
+  pop();
+}
+
 //The game background with all the detail functions
 function backgroundGame() {
   background(199, 233, 255);
@@ -78,6 +107,7 @@ function backgroundGame() {
   pop();
 }
 
+//The "details" functions
 function startButton() {
   //Button
   push();
@@ -434,7 +464,6 @@ function monkey(x, y) {
 }
 
 function monkeySad(x, y) {
-  bandage();
   //Tail
   push();
   noFill();
@@ -613,7 +642,7 @@ function bandage(x, y) {
   fill(255, 255, 255);
   noStroke();
   //bandage first layer
-  arc(x + 100, y - 50, 160, 140, PI, 0);
+  arc(x + 100, y - 50, 160, 142, PI, 0);
 
   //Cut
   stroke(255, 153, 153);
@@ -622,5 +651,5 @@ function bandage(x, y) {
 }
 
 function draw() {
-  startScreen();
+  lostScreen();
 }
