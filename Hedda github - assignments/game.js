@@ -3,7 +3,9 @@
 
 let monkeyX = 1300;
 let monkeyY = -1300;
-let state = "start";
+let monkeySadGameX = 1300;
+let monkeySadGameY = -1300;
+let state = "lost";
 
 //Game logic variable
 let velocityY = 1;
@@ -87,13 +89,25 @@ function wonScreen() {
 //Re-play screen
 function replayScreen() {
   backgroundGame();
-  push();
-  scale(0.3);
-  monkeySad(monkeyX, monkeyY);
-  bandage(monkeyX, monkeyY);
-  pop();
+  monkeySadGame(monkeySadGameX, monkeySadGameY);
+  // monkeySadGame(monkeySadGameX, monkeySadGameY);
+  monkeyX = 1300;
+  monkeyY = -1300;
+  velocityY = 1;
+  acceleration = 1;
 }
 
+// The following five lines was generated with ChtatGPT with modifications: https://chatgpt.com/share/6737bfb0-415c-800e-bc2c-b1d506131a29
+// Accessed: 2024-11-16
+// With help from emal24na
+
+//Re-set game
+function resetGame() {
+  monkeyX = 1300;
+  monkeyY = -1300;
+  velocityY = 1;
+  acceleration = 1;
+}
 //The game background with all the detail functions
 function backgroundGame() {
   background(199, 233, 255);
@@ -660,6 +674,173 @@ function monkeySad(x, y) {
   arc(x + 100, y + 20, 40, 10, PI, 0);
 }
 
+function monkeySadGame(x, y) {
+  push();
+  scale(0.3);
+  bandage(monkeySadGameX, monkeySadGameY);
+  //Tail
+  push();
+  noFill();
+  stroke(168, 111, 67);
+  strokeWeight(12);
+  beginShape();
+  vertex(x + 176, y + 188);
+  bezierVertex(x + 351, y + 102, x + 137, y, x + 273, y - 110);
+  endShape();
+  pop();
+
+  //Left arm
+  push();
+  strokeWeight(20);
+  stroke(168, 111, 67);
+  beginShape();
+  vertex(x + 44, y + 38);
+  bezierVertex(x - 42, y + 116, x + 22, y + 169, x + 48, y + 167);
+  endShape();
+  pop();
+  stroke(119, 74, 40);
+  strokeWeight(2);
+  push();
+  translate(x + 19, y + 106);
+  rotate(0.1);
+  ellipse(0, 0, 15, 50);
+  pop();
+  push();
+  fill(168, 111, 67);
+  strokeWeight(2);
+  stroke(119, 74, 40);
+  translate(x + 19, y + 106);
+  rotate(0.8);
+  ellipse(+30, -50, 140, 190);
+  pop();
+
+  //Right arm
+  push();
+  strokeWeight(20);
+  stroke(168, 111, 67);
+  beginShape();
+  vertex(x - 44 + 200, y + 38);
+  bezierVertex(
+    x + 42 + 200,
+    y + 116,
+    x - 22 + 200,
+    y + 169,
+    x - 48 + 200,
+    y + 167
+  );
+  endShape();
+  pop();
+  push();
+  translate(x - 19, y + 106);
+  rotate(-0.1);
+  ellipse(200, 21, 15, 50);
+  pop();
+  push();
+  fill(168, 111, 67);
+  strokeWeight(2);
+  stroke(119, 74, 40);
+  translate(x + 140, y + 148);
+  rotate(-0.8);
+  ellipse(+30, -50, 140, 190);
+  pop();
+
+  //Left leg
+  fill(168, 111, 67);
+  strokeWeight(2);
+  stroke(119, 74, 40);
+  push();
+  translate(x + 110, y + 300);
+  rotate(0.3);
+  ellipse(-70, -30, 45, 90);
+  pop();
+  push();
+  fill(228, 207, 191);
+  translate(x + 40, y + 294);
+  rotate();
+  arc(0, 0, 60, 40, PI, 0, CHORD);
+  pop();
+
+  //Right leg
+  fill(168, 111, 67);
+  strokeWeight(2);
+  stroke(119, 74, 40);
+  push();
+  translate(x - 110, y + 300);
+  rotate(-0.3);
+  ellipse(+260, +20, 45, 90);
+  pop();
+  push();
+  fill(228, 207, 191);
+  translate(x - 90, y + 294);
+  rotate();
+  arc(0 + 250, 0, 60, 40, PI, 0, CHORD);
+  pop();
+
+  //Body
+  ellipse(x + 100, y + 130, 170, 250);
+
+  //Belly
+  push();
+  noStroke();
+  fill(228, 207, 191);
+  ellipse(x + 100, y + 145, 130, 190);
+  pop();
+
+  //Ears
+  push();
+  fill(228, 207, 191);
+  circle(x + 10, y - 30, 70, 70);
+  circle(x + 190, y - 30, 70, 70);
+  noFill();
+  beginShape();
+  vertex(x + 5, y - 25);
+  bezierVertex(x + 15, y - 80, x - 44, y - 4, x + 20, y - 25);
+  endShape();
+  pop();
+  push();
+  noFill();
+  beginShape();
+  vertex(x + 5, y - 25);
+  bezierVertex(x + 15, y - 80, x - 44, y - 4, x + 20, y - 25);
+  endShape();
+  beginShape();
+  vertex(x - 5 + 200, y - 25);
+  bezierVertex(x - 15 + 200, y - 80, x + 44 + 200, y - 4, x - 20 + 200, y - 25);
+  endShape();
+  pop();
+
+  //Head
+  ellipse(x + 100, y, 190, 90);
+  circle(x + 100, y - 40, 160, 160);
+  push();
+  fill(228, 207, 191);
+  noStroke();
+  circle(x + 100, y - 40, 130, 130);
+  ellipse(x + 100, y, 170, 80);
+  pop();
+
+  //Eyes
+  fill(0);
+  noStroke();
+  circle(x + 60, y - 35, 20);
+  circle(x + 140, y - 35, 20);
+  fill(255);
+  circle(x + 55, y - 38, 5);
+  circle(x + 137, y - 38, 5);
+
+  //Nose
+  fill(119, 74, 40);
+  triangle(x + 100, y, x + 80, y - 10, x + 120, y - 10);
+
+  //Mouth
+  strokeWeight(3);
+  stroke(119, 74, 40);
+  line(x + 100, y, x + 100, y + 15);
+  noFill();
+  arc(x + 100, y + 20, 40, 10, PI, 0);
+  push();
+}
+
 function bandage(x, y) {
   //Plaster
   push();
@@ -858,18 +1039,64 @@ function monkeyHappy(x, y) {
 }
 
 function draw() {
+  //The starting screen
   if (state === "start") {
     startScreen();
   } else if (state === "game") {
     gameScreen();
+
+    //Monkey falling
+    if (monkeyY >= 1210) {
+      if (velocityY <= 5) {
+        state = "won";
+      } else if (velocityY > 5) {
+        state = "lost";
+      }
+    }
+
+    // //Sad monkey falling
+    // if (monkeySadGameY >= 1210) {
+    //   if (velocityY <= 5) {
+    //     state = "won";
+    //   } else if (velocityY > 5) {
+    //     state = "lost";
+    //   }
+    // }
+
+    //Gravity logic monkey
+    monkeyY = monkeyY + velocityY;
+    velocityY = velocityY + acceleration;
+
+    // //Gravity logic Sad monkey
+    // monkeySadGameY = monkeySadGameY + velocityY;
+    // velocityY = velocityY + acceleration;
+
+    //Space key - controls the acceleration
+    if (keyIsDown(32) === true) {
+      acceleration = -1;
+    } else {
+      acceleration = 0.5;
+    } //The different screens
+  } else if (state === "won") {
+    wonScreen();
+  } else if (state === "lost") {
+    lostScreen();
+  } else if (state === "replay") {
+    replayScreen();
   }
 }
 
 //Function for "start the game button"
 function mouseClicked() {
   if (state === "start") {
-  }
-  if (mouseX > 204 && mouseX < 496 && mouseY > 230 && mouseY < 417) {
-    state = "game";
+    if (mouseX > 204 && mouseX < 496 && mouseY > 230 && mouseY < 417) {
+      state = "game";
+    }
+  } else if (state === "won") {
+    resetGame(); //reset the game
+    state = "start";
+  } else if (state === "lost") {
+    replayScreen(); // starts a new version of the game
+    state = "replay";
   }
 }
