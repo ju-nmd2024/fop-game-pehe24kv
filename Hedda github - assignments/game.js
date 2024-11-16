@@ -9,8 +9,15 @@ let state = "start";
 let velocityY = 1;
 let acceleration = 1;
 
+//Canvas size
+function setup() {
+  createCanvas(700, 700);
+}
+
 //Start screen
-function startScreen() {}
+function startScreen() {
+  backgroundGame();
+}
 
 //The game background with all the detail functions
 function backgroundGame() {
@@ -57,6 +64,22 @@ function backgroundGame() {
   translate(700, 0);
   tree();
   pop();
+}
+
+function startButton() {
+  //Button
+  push();
+  fill(255, 219, 31);
+  strokeWeight(15);
+  stroke(255, 196, 31);
+  rect(230, -150 + 60, 400, 250, 20);
+  pop();
+
+  //Text
+  fill(0);
+  noStroke();
+  textSize(42);
+  text("START THE GAME", 245, 15, [100, 100]);
 }
 
 function tree2() {
@@ -584,4 +607,8 @@ function bandage(x, y) {
   stroke(255, 153, 153);
   strokeWeight(3);
   line(x + 160, y, x + 125, y + 12);
+}
+
+function draw() {
+  startScreen();
 }
