@@ -13,6 +13,7 @@ let acceleration = 1;
 function setup() {
   createCanvas(700, 700);
 }
+
 //The different game screens
 //Start screen
 function startScreen() {
@@ -857,5 +858,18 @@ function monkeyHappy(x, y) {
 }
 
 function draw() {
-  replayScreen();
+  if (state === "start") {
+    startScreen();
+  } else if (state === "game") {
+    gameScreen();
+  }
+}
+
+//Function for "start the game button"
+function mouseClicked() {
+  if (state === "start") {
+  }
+  if (mouseX > 204 && mouseX < 496 && mouseY > 230 && mouseY < 417) {
+    state = "game";
+  }
 }
