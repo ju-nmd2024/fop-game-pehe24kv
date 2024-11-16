@@ -60,6 +60,29 @@ function lostScreen() {
   pop();
 }
 
+//Won Screen
+function wonScreen() {
+  backgroundGame();
+  background(255, 255, 255, 90);
+  //Monkey position
+  push();
+  monkeyHappy(310, 300);
+  pop();
+  //Text
+  fill(0, 102, 204);
+  noStroke();
+  push();
+  textSize(50);
+  text("YOU WON,", 310, -300, [100, 100]);
+  text("YOU HELPED THE MONKEY", 100, -240, [100, 100]);
+  text("SAFE TO THE GROUND", 150, -190, [100, 100]);
+  pop();
+  push();
+  textSize(30);
+  text("(PRESS ON THE SCREEN TO GET TO THE MENU)", 80, -130, [100, 100]);
+  pop();
+}
+
 //The game background with all the detail functions
 function backgroundGame() {
   background(199, 233, 255);
@@ -650,6 +673,179 @@ function bandage(x, y) {
   line(x + 160, y, x + 125, y + 12);
 }
 
+function monkeyHappy(x, y) {
+  //Tail
+  push();
+  noFill();
+  stroke(168, 111, 67);
+  strokeWeight(12);
+  beginShape();
+  vertex(x + 176, y + 188);
+  bezierVertex(x + 351, y + 102, x + 137, y, x + 273, y - 110);
+  endShape();
+  pop();
+
+  //Left arm
+  push();
+  strokeWeight(20);
+  stroke(168, 111, 67);
+  beginShape();
+  vertex(x + 44, y + 38);
+  bezierVertex(x - 42, y + 116, x + 22, y + 169, x + 48, y + 167);
+  endShape();
+  pop();
+  stroke(119, 74, 40);
+  strokeWeight(2);
+  push();
+  translate(x + 19, y + 106);
+  rotate(0.1);
+  ellipse(0, 0, 15, 50);
+  pop();
+  push();
+  fill(168, 111, 67);
+  strokeWeight(2);
+  stroke(119, 74, 40);
+  translate(x + 19, y + 106);
+  rotate(0.8);
+  ellipse(+30, -50, 140, 190);
+  pop();
+
+  //Right arm
+  push();
+  strokeWeight(20);
+  stroke(168, 111, 67);
+  beginShape();
+  vertex(x - 44 + 200, y + 38);
+  bezierVertex(
+    x + 42 + 200,
+    y + 116,
+    x - 22 + 200,
+    y + 169,
+    x - 48 + 200,
+    y + 167
+  );
+  endShape();
+  pop();
+  push();
+  translate(x - 19, y + 106);
+  rotate(-0.1);
+  ellipse(200, 21, 15, 50);
+  pop();
+  push();
+  fill(168, 111, 67);
+  strokeWeight(2);
+  stroke(119, 74, 40);
+  translate(x + 140, y + 148);
+  rotate(-0.8);
+  ellipse(+30, -50, 140, 190);
+  pop();
+
+  //Left leg
+  fill(168, 111, 67);
+  strokeWeight(2);
+  stroke(119, 74, 40);
+  push();
+  translate(x + 110, y + 300);
+  rotate(0.3);
+  ellipse(-70, -30, 45, 90);
+  pop();
+  push();
+  fill(228, 207, 191);
+  translate(x + 40, y + 294);
+  rotate();
+  arc(0, 0, 60, 40, PI, 0, CHORD);
+  pop();
+
+  //Right leg
+  fill(168, 111, 67);
+  strokeWeight(2);
+  stroke(119, 74, 40);
+  push();
+  translate(x - 110, y + 300);
+  rotate(-0.3);
+  ellipse(+260, +20, 45, 90);
+  pop();
+  push();
+  fill(228, 207, 191);
+  translate(x - 90, y + 294);
+  rotate();
+  arc(0 + 250, 0, 60, 40, PI, 0, CHORD);
+  pop();
+
+  //Body
+  ellipse(x + 100, y + 130, 170, 250);
+
+  //Belly
+  push();
+  noStroke();
+  fill(228, 207, 191);
+  ellipse(x + 100, y + 145, 130, 190);
+  pop();
+
+  //Ears
+  push();
+  fill(228, 207, 191);
+  circle(x + 10, y - 30, 70, 70);
+  circle(x + 190, y - 30, 70, 70);
+  noFill();
+  beginShape();
+  vertex(x + 5, y - 25);
+  bezierVertex(x + 15, y - 80, x - 44, y - 4, x + 20, y - 25);
+  endShape();
+  pop();
+  push();
+  noFill();
+  beginShape();
+  vertex(x + 5, y - 25);
+  bezierVertex(x + 15, y - 80, x - 44, y - 4, x + 20, y - 25);
+  endShape();
+  beginShape();
+  vertex(x - 5 + 200, y - 25);
+  bezierVertex(x - 15 + 200, y - 80, x + 44 + 200, y - 4, x - 20 + 200, y - 25);
+  endShape();
+  pop();
+
+  //Head
+  ellipse(x + 100, y, 190, 90);
+  circle(x + 100, y - 40, 160, 160);
+  push();
+  fill(228, 207, 191);
+  noStroke();
+  circle(x + 100, y - 40, 130, 130);
+  ellipse(x + 100, y, 170, 80);
+  pop();
+
+  //Eyes
+  push();
+  noFill();
+  stroke(119, 74, 40);
+  strokeWeight(5);
+  arc(x + 60, y - 30, 20, 20, PI, 0);
+  arc(x + 140, y - 30, 20, 20, PI, 0);
+  pop();
+
+  //Nose
+  fill(119, 74, 40);
+  triangle(x + 100, y, x + 80, y - 10, x + 120, y - 10);
+
+  //Mouth
+  push();
+  fill(226, 152, 141);
+  strokeWeight(2);
+  stroke(119, 74, 40);
+  line(x + 100, y, x + 100, y + 10);
+  arc(x + 100, y + 10, 40, 20, 0, PI, CHORD);
+  pop();
+
+  //Cheeks
+  push();
+  fill(245, 180, 170);
+  noStroke();
+  ellipse(x + 45, y - 10, 40, 15);
+  ellipse(x + 155, y - 10, 40, 15);
+  pop();
+}
+
 function draw() {
-  lostScreen();
+  wonScreen();
 }
