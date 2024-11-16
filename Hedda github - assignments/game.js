@@ -13,7 +13,7 @@ let acceleration = 1;
 function setup() {
   createCanvas(700, 700);
 }
-
+//The different game screens
 //Start screen
 function startScreen() {
   backgroundGame();
@@ -73,13 +73,23 @@ function wonScreen() {
   noStroke();
   push();
   textSize(50);
-  text("YOU WON,", 310, -300, [100, 100]);
+  text("YOU WON,", 310, -290, [100, 100]);
   text("YOU HELPED THE MONKEY", 100, -240, [100, 100]);
   text("SAFE TO THE GROUND", 150, -190, [100, 100]);
   pop();
   push();
   textSize(30);
   text("(PRESS ON THE SCREEN TO GET TO THE MENU)", 80, -130, [100, 100]);
+  pop();
+}
+
+//Re-play screen
+function replayScreen() {
+  backgroundGame();
+  push();
+  scale(0.3);
+  monkeySad(monkeyX, monkeyY);
+  bandage(monkeyX, monkeyY);
   pop();
 }
 
@@ -847,5 +857,5 @@ function monkeyHappy(x, y) {
 }
 
 function draw() {
-  wonScreen();
+  replayScreen();
 }
