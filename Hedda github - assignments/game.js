@@ -5,7 +5,7 @@ let monkeyX = 1300;
 let monkeyY = -1300;
 let monkeySadGameX = 1300;
 let monkeySadGameY = -1300;
-let state = "lost";
+let state = "start";
 
 //Game logic variable
 let velocityY = 1;
@@ -30,7 +30,7 @@ function startScreen() {
   pop();
   push();
   textSize(30);
-  text("HELP THE MONKEY TO THE BANANAS", 150, -240, [100, 100]);
+  text("HELP THE MONKEY GET SAFELY TO THE GROUND", 100, -240, [100, 100]);
   pop();
 }
 
@@ -55,7 +55,7 @@ function lostScreen() {
   push();
   textSize(50);
   text("OH NO...", 330, -300, [100, 100]);
-  text("THE MONKEY FELL TO FAST", 100, -240, [100, 100]);
+  text("THE MONKEY FELL TOO FAST", 100, -240, [100, 100]);
   pop();
   push();
   textSize(30);
@@ -77,8 +77,8 @@ function wonScreen() {
   push();
   textSize(50);
   text("YOU WON,", 310, -290, [100, 100]);
-  text("YOU HELPED THE MONKEY", 100, -240, [100, 100]);
-  text("SAFE TO THE GROUND", 150, -190, [100, 100]);
+  text("YOU HELPED THE MONKEY GET", 100, -240, [100, 100]);
+  text("SAFELY TO THE GROUND", 150, -190, [100, 100]);
   pop();
   push();
   textSize(30);
@@ -88,9 +88,9 @@ function wonScreen() {
 
 //Re-play screen
 function replayScreen() {
-  backgroundGame();
-  monkeySadGame(monkeySadGameX, monkeySadGameY);
+  // backgroundGame();
   // monkeySadGame(monkeySadGameX, monkeySadGameY);
+  // // monkeySadGame(monkeySadGameX, monkeySadGameY);
   monkeyX = 1300;
   monkeyY = -1300;
   velocityY = 1;
@@ -100,7 +100,6 @@ function replayScreen() {
 // The following five lines was generated with ChtatGPT with modifications: https://chatgpt.com/share/6737bfb0-415c-800e-bc2c-b1d506131a29
 // Accessed: 2024-11-16
 // With help from emal24na
-
 //Re-set game
 function resetGame() {
   monkeyX = 1300;
@@ -1097,6 +1096,6 @@ function mouseClicked() {
     state = "start";
   } else if (state === "lost") {
     replayScreen(); // starts a new version of the game
-    state = "replay";
+    state = "game";
   }
 }
