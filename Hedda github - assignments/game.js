@@ -3,9 +3,8 @@
 
 let monkeyX = 1300;
 let monkeyY = -1300;
-let monkeySadGameX = 1300;
-let monkeySadGameY = -1300;
 let state = "start";
+let monkeyState = "happy";
 
 //Game logic variable
 let velocityY = 1;
@@ -37,7 +36,12 @@ function startScreen() {
 //Game screen
 function gameScreen() {
   backgroundGame();
-  monkey(monkeyX, monkeyY);
+  // if monkey variable is sad or not
+  if (monkeyState === "happy") {
+    monkey(monkeyX, monkeyY);
+  } else if (monkeyState === "sad") {
+    monkeySadGame(monkeyX, monkeyY);
+  }
 }
 
 //Lost screen
@@ -46,8 +50,9 @@ function lostScreen() {
   background(0, 0, 0, 90);
   //Monkey position
   push();
-  monkeySad(310, 300);
-  bandage(310, 300);
+  translate(-850, 1500);
+  scale(3);
+  monkeySad(1300, -1300);
   pop();
   //Text
   fill(0, 0, 0);
@@ -511,6 +516,8 @@ function monkey(x, y) {
 }
 
 function monkeySad(x, y) {
+  push();
+  scale(0.3);
   //Tail
   push();
   noFill();
@@ -671,12 +678,34 @@ function monkeySad(x, y) {
   line(x + 100, y, x + 100, y + 15);
   noFill();
   arc(x + 100, y + 20, 40, 10, PI, 0);
+
+  //Plaster
+  push();
+  translate(x + 40, y);
+  rotate(0.9);
+  fill(255, 255, 255);
+  noStroke();
+  ellipse(0, 0, 20, 50);
+  fill(255, 229, 204);
+  rect(-10, -7, 20, 20);
+  pop();
+
+  //Bandage
+  fill(255, 255, 255);
+  noStroke();
+  //bandage first layer
+  arc(x + 100, y - 50, 160, 142, PI, 0);
+
+  //Cut
+  stroke(255, 153, 153);
+  strokeWeight(3);
+  line(x + 160, y, x + 125, y + 12);
+  pop();
 }
 
 function monkeySadGame(x, y) {
   push();
   scale(0.3);
-  bandage(monkeySadGameX, monkeySadGameY);
   //Tail
   push();
   noFill();
@@ -838,6 +867,28 @@ function monkeySadGame(x, y) {
   noFill();
   arc(x + 100, y + 20, 40, 10, PI, 0);
   push();
+
+  //Plaster
+  push();
+  translate(x + 40, y);
+  rotate(0.9);
+  fill(255, 255, 255);
+  noStroke();
+  ellipse(0, 0, 20, 50);
+  fill(255, 229, 204);
+  rect(-10, -7, 20, 20);
+  pop();
+
+  //Bandage
+  fill(255, 255, 255);
+  noStroke();
+  //bandage first layer
+  arc(x + 100, y - 50, 160, 142, PI, 0);
+
+  //Cut
+  stroke(255, 153, 153);
+  strokeWeight(3);
+  line(x + 160, y, x + 125, y + 12);
 }
 
 function bandage(x, y) {
@@ -1048,27 +1099,16 @@ function draw() {
     if (monkeyY >= 1210) {
       if (velocityY <= 5) {
         state = "won";
+        monkeyState = "happy";
       } else if (velocityY > 5) {
         state = "lost";
+        monkeyState = "sad";
       }
     }
-
-    // //Sad monkey falling
-    // if (monkeySadGameY >= 1210) {
-    //   if (velocityY <= 5) {
-    //     state = "won";
-    //   } else if (velocityY > 5) {
-    //     state = "lost";
-    //   }
-    // }
 
     //Gravity logic monkey
     monkeyY = monkeyY + velocityY;
     velocityY = velocityY + acceleration;
-
-    // //Gravity logic Sad monkey
-    // monkeySadGameY = monkeySadGameY + velocityY;
-    // velocityY = velocityY + acceleration;
 
     //Space key - controls the acceleration
     if (keyIsDown(32) === true) {
