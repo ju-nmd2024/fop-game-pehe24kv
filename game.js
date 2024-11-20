@@ -34,6 +34,7 @@ function startScreen() {
 }
 
 //Game screen
+//The following lines are of help by a second year NMD student, Erik Sandquist
 function gameScreen() {
   backgroundGame();
   // if monkey variable is sad or not
@@ -43,6 +44,7 @@ function gameScreen() {
     monkeySadGame(monkeyX, monkeyY);
   }
 }
+//Help from student ended
 
 //Lost screen
 function lostScreen() {
@@ -82,7 +84,7 @@ function wonScreen() {
   push();
   textSize(50);
   text("YOU WON,", 310, -290, [100, 100]);
-  text("YOU HELPED THE MONKEY GET", 100, -240, [100, 100]);
+  text("YOU HELPED THE MONKEY GET", 60, -240, [100, 100]);
   text("SAFELY TO THE GROUND", 150, -190, [100, 100]);
   pop();
   push();
@@ -91,20 +93,9 @@ function wonScreen() {
   pop();
 }
 
-//Re-play screen
-function replayScreen() {
-  // backgroundGame();
-  // monkeySadGame(monkeySadGameX, monkeySadGameY);
-  // // monkeySadGame(monkeySadGameX, monkeySadGameY);
-  monkeyX = 1300;
-  monkeyY = -1300;
-  velocityY = 1;
-  acceleration = 1;
-}
-
-// The following five lines was generated with ChtatGPT with modifications: https://chatgpt.com/share/6737bfb0-415c-800e-bc2c-b1d506131a29
+// The following lines was generated with ChatGPT with modifications: https://chatgpt.com/share/6737bfb0-415c-800e-bc2c-b1d506131a29
 // Accessed: 2024-11-16
-// With help from emal24na
+// With help from first year NMD student Alen Eminovic
 //Re-set game
 function resetGame() {
   monkeyX = 1300;
@@ -112,6 +103,16 @@ function resetGame() {
   velocityY = 1;
   acceleration = 1;
 }
+//End of help from ChatGPT and student
+
+//Re-play screen
+function replayScreen() {
+  monkeyX = 1300;
+  monkeyY = -1300;
+  velocityY = 1;
+  acceleration = 1;
+}
+
 //The game background with all the detail functions
 function backgroundGame() {
   background(199, 233, 255);
@@ -1135,7 +1136,7 @@ function mouseClicked() {
     resetGame(); //reset the game
     state = "start";
   } else if (state === "lost") {
-    replayScreen(); // starts a new version of the game
+    replayScreen(); //Restarts the game - but with a "new" character
     state = "game";
   }
 }
